@@ -10,7 +10,7 @@ fyl = Fore.YELLOW
 sbr = Style.BRIGHT
 
 
-def print_logo():
+def printLogo():
     os.system('clear')
     print(fyl + sbr + '''\n ____  ____  ____  ____  ____  ____ 
 ||t ||||a ||||b ||||l ||||e ||||s ||
@@ -26,7 +26,7 @@ def print_logo():
  ''')
 
 
-def main_menu():
+def printMainMenu():
     new_t = byl + fbc + 'n' + sra + fyl + sbr + 'ew'
     open_t = byl + fbc + 'o' + sra + fyl + sbr + 'pen'
     exit_p = fyl + sbr + 'e' + sra + byl + fbc + 'x' + sra + fyl + sbr + 'it'
@@ -35,7 +35,7 @@ def main_menu():
     print('\n' + new_t, open_t, list_t, exit_p, delete_t + Style.RESET_ALL + '\n')
 
 
-def open_menu():
+def printOpenMenu():
     add_row_t = byl + fbc + 'a' + sra + fyl + sbr + 'dd' + sra + byl + fbc + 'r' + sra + fyl + sbr + 'ow'
     add_col = byl + fbc + 'a' + sra + fyl + sbr + 'dd' + sra + byl + fbc + 'c' + sra + fyl + sbr + 'ol'
     save = byl + fbc + 's' + sra + fyl + sbr + 'ave'
@@ -48,7 +48,7 @@ def open_menu():
     print('\n' + add_row_t, add_col, edit, search,  help_m + '\n\n' + del_row, del_col, save, exit_t + '\n')
 
 
-def search_menu():
+def printSearchMenu():
     exit_s = fyl + sbr + 'e' + sra + byl + fbc + 'x' + sra + fyl + sbr + 'it'
     save_s = byl + fbc + 's' + sra + fyl + sbr + 'ave'
     search = byl + fbc + 's' + sra + fyl + sbr + 'earc' + sra + byl + fbc + 'h' + sra
