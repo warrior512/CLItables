@@ -46,9 +46,9 @@ def createFile(tabName, tabList):
 
 def createNewTable(newTableName):
     if not newTableName.isalnum():
-        return '\n>>> invalid filename'
+        return '>>> invalid filename'
     elif os.path.isfile(f'{getSelfPath()}{tabFold}/{newTableName}.csv'):
-        return f'\n>>> table {newTableName} already exists'
+        return f'>>> table {newTableName} already exists'
     else:
         while True:
             columns = input('number of columns: ').strip()
@@ -62,7 +62,7 @@ def createNewTable(newTableName):
             newTabList.append(input(f'culumn {i + 1}: '))
         createFile(newTableName, [newTabList])
         writeLog(f'create new table "{newTableName}"')
-        return f'\n>>> table {newTableName} created'
+        return f'>>> table {newTableName} created'
 
 
 def getMaxLens(tabList):
@@ -156,9 +156,22 @@ def openTable(tabName):
             return
 
 
+def delTable():
+    tabName = input('file name: ').strip()
+    tabPath = f'{getSelfPath()}{tabFold}/{tabName}.csv'
+    if not os.path.isfile(tabPath):
+        print('>>> file not found')
+        input()
+        return
+    os.system(f'rm {tabPath}')
+    writeLog(f'delete table "{tabName}"')
+    input(f'>>> table "{tabName}" deleted')
+
+
 if __name__ == '__main__':
     crateLogFile()
     createTablesFolder()
+    writeLog('start CLItables')
     while True:
         printLogo()
         os.system(f'ls {getSelfPath()}{tabFold}') 
@@ -167,14 +180,17 @@ if __name__ == '__main__':
         if action == 'n':
             tableName = input('new table name: ')
             print(createNewTable(f'{tableName}'))
-            input('\npress enter to continue')
+            input('press enter to continue')
             continue
         elif action == 'o':
-            openTable(input('open table name: ').strip())
-            
+            openTable(input('open table name: ').strip())   
         elif action == 'x':
             writeLog('exit from the program')
             exit()
+        elif action == 'd':
+            delTable()
+        else:
+            input('>>> command not found')
 
 
 
