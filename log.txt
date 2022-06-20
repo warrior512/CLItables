@@ -1,0 +1,16 @@
+[20-06-2022 15:37:23] create log.txt
+[20-06-2022 15:37:24] create tables folder
+[20-06-2022 15:37:40] create new table test
+[20-06-2022 15:37:58] create new table test2
+[20-06-2022 15:57:26] open table "test"
+[20-06-2022 15:57:50] add row ['vasya', '455783'] in table"test"
+[20-06-2022 15:58:19] exit on table "test" with saving
+[20-06-2022 15:58:23] open table "test"
+[20-06-2022 15:58:36] add row ['yhuiyg', ''] in table"test"
+[20-06-2022 15:58:41] exit on table "test" with saving
+[20-06-2022 15:58:47] open table "test"
+[20-06-2022 15:59:01] add row ['rtyhj', ''] in table"test"
+[20-06-2022 15:59:07] exit on table "test" without saving
+[20-06-2022 15:59:09] exit from the program
+[20-06-2022 16:01:38] create new table "test3"
+[20-06-2022 16:02:18] exit from the program

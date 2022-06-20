@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime
 from modules.interface import *
 
 
@@ -15,6 +16,24 @@ def createTablesFolder():
     foldPath = f'{getSelfPath()}{tabFold}'
     if not os.path.isdir(foldPath):
         os.system(f'mkdir {foldPath}')
+        writeLog('create tables folder')
+
+
+def getlogFilePath():
+    return f'{getSelfPath()}log.txt'
+
+
+def crateLogFile():
+    logTime = datetime.now().strftime('[%d-%m-%Y %H:%M:%S]')
+    if not os.path.isfile(getlogFilePath()):
+        with open(getlogFilePath(), 'w') as f:
+            f.write(f'{logTime} create log.txt\n')
+
+
+def writeLog(log):
+    logTime = datetime.now().strftime('[%d-%m-%Y %H:%M:%S]')
+    with open(getlogFilePath(), 'a') as f:
+        f.write(f'{logTime} {log}\n')
 
 
 def createFile(tabName, tabList):
@@ -42,6 +61,7 @@ def createNewTable(newTableName):
         for i in range(int(columns)):
             newTabList.append(input(f'culumn {i + 1}: '))
         createFile(newTableName, [newTabList])
+        writeLog(f'create new table "{newTableName}"')
         return f'\n>>> table {newTableName} created'
 
 
@@ -75,7 +95,7 @@ def printTable(tabList, tabName):
     print(f'columns: {str(len(tabList[0]))}  rows: {str(len(tabList) - 1)}')
 
 
-def addRow(tabList):
+def addRow(tabName, tabList):
     row = []
     index = input('after row (enter for add row to end): ').strip()
     if not index.isdigit() and index != '' or index.isdigit() and int(index) > len(tabList) - 1:
@@ -88,6 +108,7 @@ def addRow(tabList):
         value = input(key + ': ')
         row.append(value)
     tabList.insert(int(index) + 1, row)
+    writeLog(f'add row {row} in table "{tabName}"')
     return tabList
 
 
@@ -102,9 +123,11 @@ def exitTab(tabList, tabName):
             item = input('save changes? [y/n]:').lower().strip()
             if item == 'y':
                 createFile(tabName, tabList)
+                writeLog(f'exit on table "{tabName}" with saving')
                 print(f'>>> table {tabName} was saved')
                 return
             elif item == 'n':
+                writeLog(f'exit on table "{tabName}" without saving')
                 return
             else:
                 print('>>> command not found')
@@ -114,6 +137,7 @@ def openTable(tabName):
     if not os.path.isfile(f'{getSelfPath()}{tabFold}/{tabName}.csv'):
         print('>>> table not found')
         return
+    writeLog(f'open table "{tabName}"')
     tabList = fileToList(tabName)
     while True:
         printLogo()
@@ -121,9 +145,10 @@ def openTable(tabName):
         printOpenMenu()
         action = input('>').lower().strip()
         if action == 'ar':
-            flist = addRow(tabList)
+            flist = addRow(tabName, tabList)
         elif action == 's':
             createFile(tabName, tabList)
+            writeLog(f'save table "{tabName}"')
             print(f'>>> table {tabName} was saved')
             input()
         elif action == 'x':
@@ -132,6 +157,7 @@ def openTable(tabName):
 
 
 if __name__ == '__main__':
+    crateLogFile()
     createTablesFolder()
     while True:
         printLogo()
@@ -147,6 +173,7 @@ if __name__ == '__main__':
             openTable(input('open table name: ').strip())
             
         elif action == 'x':
+            writeLog('exit from the program')
             exit()
 
 

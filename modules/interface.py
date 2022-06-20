@@ -30,9 +30,8 @@ def printMainMenu():
     new_t = byl + fbc + 'n' + sra + fyl + sbr + 'ew'
     open_t = byl + fbc + 'o' + sra + fyl + sbr + 'pen'
     exit_p = fyl + sbr + 'e' + sra + byl + fbc + 'x' + sra + fyl + sbr + 'it'
-    list_t = byl + fbc + 'l' + sra + fyl + sbr + 'ist'
     delete_t = byl + fbc + 'd' + sra + fyl + sbr + 'el'
-    print('\n' + new_t, open_t, list_t, exit_p, delete_t + Style.RESET_ALL + '\n')
+    print('\n' + new_t, open_t, exit_p, delete_t + Style.RESET_ALL + '\n')
 
 
 def printOpenMenu():
