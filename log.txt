@@ -31,3 +31,23 @@
 [21-06-2022 00:32:25] start CLItables
 [21-06-2022 00:32:32] create new table "test2"
 [21-06-2022 00:34:50] exit from the program
+[21-06-2022 07:39:41] start CLItables
+[21-06-2022 07:39:48] exit from the program
+[21-06-2022 08:29:47] start CLItables
+[21-06-2022 08:29:56] open table "test2"
+[21-06-2022 08:30:03] open table "test3"
+[21-06-2022 08:30:19] open table "test"
+[21-06-2022 08:31:02] start CLItables
+[21-06-2022 08:31:06] open table "test"
+[21-06-2022 08:31:51] start CLItables
+[21-06-2022 08:31:54] open table "test"
+[21-06-2022 08:32:14] edit row #1 before: ['vasya', '']; after: ['vasya', '']
+[21-06-2022 08:32:38] edit row #1 before: ['vasya', '56-34-23']; after: ['vasya', '56-34-23']
+[21-06-2022 08:32:46] save table "test"
+[21-06-2022 08:33:59] edit row #0 before: ['name', 'tel']; after: ['name', 'tel']
+[21-06-2022 08:34:04] exit from the program
+[21-06-2022 08:36:52] start CLItables
+[21-06-2022 08:36:57] open table "test"
+[21-06-2022 08:37:18] edit row #2 before: ['yhuiyg', '']; after: ['Petya', '67-34-09']
+[21-06-2022 08:37:21] save table "test"
+[21-06-2022 08:37:28] exit from the program

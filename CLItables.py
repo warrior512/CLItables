@@ -44,6 +44,11 @@ def createFile(tabName, tabList):
             csv.writer(f).writerow(row)
         
 
+def fileToList(tabName):
+    with open(f'{getSelfPath()}{tabFold}/{tabName}.csv') as f:
+        return list(csv.reader(f))
+
+
 def createNewTable(newTableName):
     if not newTableName.isalnum():
         return '>>> invalid filename'
@@ -112,9 +117,23 @@ def addRow(tabName, tabList):
     return tabList
 
 
-def fileToList(tabName):
-    with open(f'{getSelfPath()}{tabFold}/{tabName}.csv') as f:
-        return list(csv.reader(f))
+def editRow(tabList):
+    edRow = input('edit row, "0" to rename columns: ').strip()
+    if not edRow.isdigit() or edRow.isdigit() and int(edRow) > len(tabList) - 1:
+        input('>>> invalid value')
+        return tabList
+    befRow = tabList[int(edRow)].copy()
+    index = 0
+    print('"-" do dont edit value')
+    for key in tabList[0]:
+        editVal = input(f'{key} "{tabList[int(edRow)][index]}" edit to: ')
+        if editVal == '-':
+            tabList[int(edRow)][index] = tabList[int(edRow)][index]
+        else:
+            tabList[int(edRow)][index] = editVal
+        index += 1
+    writeLog(f'edit row #{edRow} before: {befRow}; after: {tabList[int(edRow)]}')
+    return tabList
 
 
 def exitTab(tabList, tabName):
@@ -149,8 +168,9 @@ def openTable(tabName):
         elif action == 's':
             createFile(tabName, tabList)
             writeLog(f'save table "{tabName}"')
-            print(f'>>> table {tabName} was saved')
-            input()
+            input(f'>>> table {tabName} was saved')
+        elif action == 'er':
+            editRow(tabList)
         elif action == 'x':
             exitTab(tabList, tabName)
             return
