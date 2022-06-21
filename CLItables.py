@@ -117,7 +117,7 @@ def addRow(tabName, tabList):
     return tabList
 
 
-def editRow(tabList):
+def editRow(tabList, tabName):
     edRow = input('edit row, "0" to rename columns: ').strip()
     if not edRow.isdigit() or edRow.isdigit() and int(edRow) > len(tabList) - 1:
         input('>>> invalid value')
@@ -132,11 +132,11 @@ def editRow(tabList):
         else:
             tabList[int(edRow)][index] = editVal
         index += 1
-    writeLog(f'edit row #{edRow} before: {befRow}; after: {tabList[int(edRow)]}')
+    writeLog(f'edit row #{edRow} on table "{tabName}". before: {befRow}; after: {tabList[int(edRow)]}')
     return tabList
 
 
-def delRow(tabList):
+def delRow(tabList, tabName):
     print(tabList)
     delRow = input('delete row:').strip()
     if not delRow.isdigit() or delRow.isdigit() and int(delRow) > len(tabList) - 1 or delRow == '0':
@@ -144,7 +144,30 @@ def delRow(tabList):
         return tabList
     deletedRow = tabList[int(delRow)].copy()
     del tabList[int(delRow)]
-    writeLog(f'delete row#{delRow}: {deletedRow}')
+    writeLog(f'delete row#{delRow} on table "{tabName}": {deletedRow}')
+    return tabList
+
+
+def addColumn(tabList, tabName):
+    while True:
+        addColInd = input(f'number column add (1-{str(len(tabList[0]) + 1)}): ').strip()
+        if not addColInd.isdigit() or addColInd.isdigit() and int(addColInd) > len(tabList[0]) + 1 or addColInd.isdigit() and int(addColInd) < 1:
+            input('>>> invalid value')
+            return
+        addColInd = int(addColInd)
+        break
+    while True:
+        addColName = input('new column name: ').strip()
+        if addColName in tabList[0]:
+            input('>>> invalid value')
+            continue
+        break
+    for line in tabList:
+        if line == tabList[0]:
+            line.insert(addColInd - 1, addColName)
+        else:
+            line.insert(addColInd - 1, '')
+    writeLog(f'add column: "{addColName}" in table "{tabName}"')
     return tabList
 
 
@@ -178,9 +201,11 @@ def openTable(tabName):
         if action == 'ar':
             flist = addRow(tabName, tabList)
         elif action == 'er':
-            editRow(tabList)
+            editRow(tabList, tabName)
         elif action == 'dr':
-            tabList = delRow(tabList)
+            tabList = delRow(tabList, tabName)
+        elif action == 'ac':
+            addColumn(tabList, tabName)
         elif action == 's':
             createFile(tabName, tabList)
             writeLog(f'save table "{tabName}"')
@@ -189,6 +214,8 @@ def openTable(tabName):
             exitTab(tabList, tabName)
             writeLog(f'exit from {tabName} table')
             return
+        else:
+            input('>>> command not found')
 
 
 def delTable():
