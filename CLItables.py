@@ -171,6 +171,20 @@ def addColumn(tabList, tabName):
     return tabList
 
 
+def delCol(tabList, tabName):
+    while True:
+        delCol = input('name column for delete: ').strip()
+        if delCol not in tabList[0]:
+            input('>>> column not found')
+            continue
+        ind = tabList[0].index(delCol)
+        break
+    for line in tabList:
+        del line[ind]
+    writeLog(f'delete column "{delCol}" on table"{tabName}"')
+    return tabList
+
+
 def exitTab(tabList, tabName):
     if fileToList(tabName) != tabList:
         while True:
@@ -199,20 +213,21 @@ def openTable(tabName):
         printOpenMenu()
         action = input('>').lower().strip()
         if action == 'ar':
-            flist = addRow(tabName, tabList)
+            tabList = addRow(tabName, tabList)
         elif action == 'er':
-            editRow(tabList, tabName)
+            tabList = editRow(tabList, tabName)
         elif action == 'dr':
             tabList = delRow(tabList, tabName)
         elif action == 'ac':
-            addColumn(tabList, tabName)
+            tabList = addColumn(tabList, tabName)
+        elif action == 'dc':
+            tabList = delCol(tabList, tabName)
         elif action == 's':
             createFile(tabName, tabList)
             writeLog(f'save table "{tabName}"')
             input(f'>>> table {tabName} was saved')
         elif action == 'x':
             exitTab(tabList, tabName)
-            writeLog(f'exit from {tabName} table')
             return
         else:
             input('>>> command not found')
@@ -253,15 +268,3 @@ if __name__ == '__main__':
             delTable()
         else:
             input('>>> command not found')
-
-
-
-
-
-
-
-
-
-
-
-

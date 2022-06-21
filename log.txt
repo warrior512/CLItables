@@ -82,3 +82,25 @@
 [21-06-2022 15:09:09] open table "test"
 [21-06-2022 15:09:35] exit from test table
 [21-06-2022 15:09:36] exit from the program
+[21-06-2022 15:17:47] start CLItables
+[21-06-2022 15:17:56] open table "test"
+[21-06-2022 15:18:08] add column: "email" in table "test"
+[21-06-2022 15:18:16] exit on table "test" with saving
+[21-06-2022 15:18:16] exit from test table
+[21-06-2022 15:18:28] exit from the program
+[21-06-2022 15:21:32] start CLItables
+[21-06-2022 15:21:37] open table "test"
+[21-06-2022 15:22:18] edit row #2 on table "test". before: ['Kolya', '', '56-23-84']; after: ['Kolya', 'example@mail.com', '']
+[21-06-2022 15:23:14] edit row #2 on table "test". before: ['Kolya', 'example@mail.com', '']; after: ['Kolya', 'example@mail.com', '56-45-34']
+[21-06-2022 15:23:22] exit on table "test" with saving
+[21-06-2022 15:23:25] exit from the program
+[21-06-2022 15:35:24] start CLItables
+[21-06-2022 15:35:28] open table "test"
+[21-06-2022 15:35:41] exit from the program
+[21-06-2022 15:38:55] start CLItables
+[21-06-2022 15:38:58] open table "test"
+[21-06-2022 15:39:24] add row ['Vitya', 'some@mail.ru', '56-44-92'] in table "test"
+[21-06-2022 15:39:31] save table "test"
+[21-06-2022 15:39:50] delete column "email" on table"test"
+[21-06-2022 15:39:59] exit on table "test" with saving
+[21-06-2022 15:40:02] exit from the program
