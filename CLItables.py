@@ -136,6 +136,18 @@ def editRow(tabList):
     return tabList
 
 
+def delRow(tabList):
+    print(tabList)
+    delRow = input('delete row:').strip()
+    if not delRow.isdigit() or delRow.isdigit() and int(delRow) > len(tabList) - 1 or delRow == '0':
+        input('>>> invalid value')
+        return tabList
+    deletedRow = tabList[int(delRow)].copy()
+    del tabList[int(delRow)]
+    writeLog(f'delete row#{delRow}: {deletedRow}')
+    return tabList
+
+
 def exitTab(tabList, tabName):
     if fileToList(tabName) != tabList:
         while True:
@@ -165,14 +177,17 @@ def openTable(tabName):
         action = input('>').lower().strip()
         if action == 'ar':
             flist = addRow(tabName, tabList)
+        elif action == 'er':
+            editRow(tabList)
+        elif action == 'dr':
+            tabList = delRow(tabList)
         elif action == 's':
             createFile(tabName, tabList)
             writeLog(f'save table "{tabName}"')
             input(f'>>> table {tabName} was saved')
-        elif action == 'er':
-            editRow(tabList)
         elif action == 'x':
             exitTab(tabList, tabName)
+            writeLog(f'exit from {tabName} table')
             return
 
 

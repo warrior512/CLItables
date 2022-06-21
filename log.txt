@@ -51,3 +51,12 @@
 [21-06-2022 08:37:18] edit row #2 before: ['yhuiyg', '']; after: ['Petya', '67-34-09']
 [21-06-2022 08:37:21] save table "test"
 [21-06-2022 08:37:28] exit from the program
+[21-06-2022 10:22:29] start CLItables
+[21-06-2022 10:22:33] open table "test"
+[21-06-2022 10:22:47] add row ['Kolya', '56-23-84'] in table "test"
+[21-06-2022 10:22:50] save table "test"
+[21-06-2022 10:23:06] add row ['Oleg', '45-23-08'] in table "test"
+[21-06-2022 10:23:08] save table "test"
+[21-06-2022 10:23:37] delete row#2: ['Petya', '67-34-09']
+[21-06-2022 10:23:41] save table "test"
+[21-06-2022 10:23:46] exit from the program
